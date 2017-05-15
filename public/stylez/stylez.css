@@ -1,0 +1,18 @@
+.jumbotron {
+  color: cyan;
+  background-color: grey;
+  text-align: center;
+}
+
+p {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+input {
+  text-align: center;
+}
+body  {
+  text-align: center;
+  background-color: lightgrey;
+}

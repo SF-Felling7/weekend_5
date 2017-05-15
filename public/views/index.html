@@ -1,15 +1,34 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>Weekend 5 Challenge</title>
     <link rel="stylesheet" href="/vendors/bootstrap.min.css">
     <link rel="stylesheet" href="/stylez/stylez.css">
     <script src="vendors/angular.min.js" charset="utf-8"></script>
     <script src="scripts/client.js" charset="utf-8"></script>
-  </head>
-  <body>
-<h1>Movies</h1>
+</head>
 
-  </body>
+<body ng-app="MovieApp">
+
+    <div ng-controller="MovieAppController as mac">
+        <h1 class="jumbotron">Movies list</h1>
+
+        <input ng-model="mac.title" type="text">
+        <button ng-click="mac.getMovies('')" type="button">SEARCH</button>
+        <div ng-repeat="movies in mac.movies">
+          <div>
+            {{movies.Title}} {{movies.Year}}
+            <img ng-src="{{movies.Poster}}">
+            <button ng-click='mac.postFav(movies.Title, movies.Year, movies.Poster)'>Favorite</button>
+          </div>
+
+
+        </div>
+
+    </div>
+
+</body>
+
 </html>

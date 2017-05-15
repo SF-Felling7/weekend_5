@@ -15,24 +15,33 @@ app.use(bodyParser.json());
 
 //CREATE MONGODB
 
-// mongoose.connect( 'localhost:27017/movieCollection' );
-//
-// //CREATE MONGOOSE SCHEMA
-//
-// var movieSchema = mongoose.Schema({
-//   title: STRING,
-//   year: NUMBER,
-//   rated: STRING,
-//   poster:STRING
-// });
-//
-// var movies = mongoose.model( 'movies', movieSchema );
+mongoose.connect( 'localhost:27017/movieCollection' );
+
+//CREATE MONGOOSE SCHEMA
+
+var movieSchema = mongoose.Schema({
+  title: String,
+  year: Number,
+  poster:String
+});
+
+var movies = mongoose.model( 'movies', movieSchema );
 
 
 //INITIAL GET, SERVER INDEX FILE
 app.get( '/', function( req, res ) {
   console.log( 'hit base url!');
   res.sendFile( path.resolve( './public/views/index.html' ) );
+});
+
+app.post( '/postFav', function( req, res ) {
+  console.log('hit post');
+  console.log('req.body =', req.body);
+  var newMovie = movies( req.body) ;
+  newMovie.save().then(function() {
+    res.sendStatus( 200 );
+  });
+
 });
 
 
